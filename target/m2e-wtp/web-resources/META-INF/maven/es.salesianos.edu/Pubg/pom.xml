@@ -14,7 +14,7 @@
 		<version>2.2.2.RELEASE</version>
 	</parent>
 
-	<name>Pubg bag</name>
+	<name>Pokemon Game</name>
 
 	<dependencies>
 
@@ -95,6 +95,11 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
 		</dependency>
+		
+		<dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
 
 	</dependencies>
 

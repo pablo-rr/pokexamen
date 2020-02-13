@@ -1,27 +1,21 @@
 package es.salesianos.controller;
 
-import java.util.List;
-import java.util.Random;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import es.salesianos.model.PokemonTrainer;
-import es.salesianos.model.Pokemon;
-import es.salesianos.model.Team;
 import es.salesianos.model.AbstractPokeball;
 import es.salesianos.model.AbstractTeam;
+import es.salesianos.model.Pokemon;
 import es.salesianos.model.PokemonTrainer;
 
 @Controller
@@ -69,6 +63,7 @@ public class IndexController {
 		
 		if (!StringUtils.isEmpty(pokemonForm.getHealth())) {
 			pokemon.setHealth(pokemonForm.getHealth());
+			pokemon.setMaxHealth(pokemonForm.getHealth());
 		}
 
 		if (!StringUtils.isEmpty(pokemonForm.isCurrentFighter())) {
@@ -76,22 +71,16 @@ public class IndexController {
 		}
 	}
 	
-	private void addPageDataWildPokemon(Pokemon pokemonForm) {
-		if (!StringUtils.isEmpty(pokemonForm.getName())) {
-			wildPokemon.setName(pokemonForm.getName());
-		}
-		
-		if (!StringUtils.isEmpty(pokemonForm.isWild())) {
-			wildPokemon.setWild(true);
-		}
-		
-		if (!StringUtils.isEmpty(pokemonForm.getPower())) {
-			wildPokemon.setPower(pokemonForm.getPower());
-		}
-		
-		if (!StringUtils.isEmpty(pokemonForm.getHealth())) {
-			wildPokemon.setHealth(pokemonForm.getHealth());
-		}
+	private void addPageDataWildPokemon(ModelMap model, Pokemon wildPokemon) {
+
+		wildPokemon.setMaxHealth(wildPokemon.getRandomHealth());
+		wildPokemon.setHealth(wildPokemon.getMaxHealth());
+		wildPokemon.setPower(wildPokemon.getRandomPower());
+
+		model.addAttribute("pokemonWildName", wildPokemon.getRandomName());
+		model.addAttribute("pokemonWildHealth", wildPokemon.getHealth());
+		model.addAttribute("pokemonWildMaxHealth", wildPokemon.getMaxHealth());
+		model.addAttribute("pokemonWildPower", wildPokemon.getPower());
 	}
 	
 	
@@ -112,10 +101,11 @@ public class IndexController {
 		return modelAndView;
 	}
 	
+	@GetMapping("insertWildPokemon")
 	@PostMapping(path = "/pokemonEvent", params = {"fight"})
-	public ModelAndView wildPokemon(@ModelAttribute("pokemon") Pokemon poke) {	
+	public ModelAndView wildPokemonInsert(ModelMap model, @ModelAttribute("pokemon") Pokemon poke) {
 		ModelAndView modelAndView = new ModelAndView("index");
-		addPageDataWildPokemon(poke);
+		addPageDataWildPokemon(model, poke);
 		addAllObjects(modelAndView);
 		return modelAndView;
 	}

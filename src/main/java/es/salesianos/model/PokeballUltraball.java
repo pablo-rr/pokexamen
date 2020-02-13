@@ -4,9 +4,10 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component("pokeball")
-@Profile("pokeballBasic")
-public class PokeballBasic extends AbstractPokeball{
-	public PokeballBasic() {
-		setCatchChancePercentage(25);
+@Profile("pokeballUltraball")
+public class PokeballUltraball extends AbstractPokeball {
+	public PokeballUltraball() {
+		setCatchChancePercentage(75);
 	}
 }
+
