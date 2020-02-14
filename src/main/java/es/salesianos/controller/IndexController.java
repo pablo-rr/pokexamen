@@ -102,8 +102,15 @@ public class IndexController {
 	}
 	
 	@GetMapping("insertWildPokemon")
-	@PostMapping(path = "/pokemonEvent", params = {"fight"})
 	public ModelAndView wildPokemonInsert(ModelMap model, @ModelAttribute("pokemon") Pokemon poke) {
+		ModelAndView modelAndView = new ModelAndView("index");
+		addPageDataWildPokemon(model, poke);
+		addAllObjects(modelAndView);
+		return modelAndView;
+	}
+
+	@PostMapping(path = "/pokemonEvent", params = {"fight"})
+	public ModelAndView wildPokemon(ModelMap model, @ModelAttribute("pokemon") Pokemon poke) {
 		ModelAndView modelAndView = new ModelAndView("index");
 		addPageDataWildPokemon(model, poke);
 		addAllObjects(modelAndView);
