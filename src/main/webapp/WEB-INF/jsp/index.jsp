@@ -96,7 +96,7 @@
 		<c:out value="${team.getCurrentPokemon().getMessage()}"></c:out>
 		<c:out value="${pokemon.getMessage()}"></c:out><br />
 		
-		<span> Name: <c:out value="${pokemonWildName}" /></span><br />
+		<span> Name: <c:out value="Wild ${pokemonWildName}" /></span><br />
 		<span> Health: <c:out value="${pokemonWildHealth}" /></span><br />
 		<span> Max Health: <c:out value="${pokemonWildMaxHealth}" /></span><br />
 		<span> Power: <c:out value="${pokemonWildPower}" /></span><br /><br />
