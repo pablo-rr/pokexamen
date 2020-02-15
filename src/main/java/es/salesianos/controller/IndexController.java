@@ -156,7 +156,7 @@ public class IndexController {
 	private void heal(String id) {
 		for(Pokemon pokemon : team.getMembers()) {
 			if(pokemon.getID().equals(id)) {
-				pokemon.heal(2);
+				pokemon.heal(20);
 				pokemon.setMessage(pokemon.getName() + " was healed!");
 			}
 		}
@@ -170,14 +170,28 @@ public class IndexController {
 		return modelAndView;
 	}
 
+//	private void pokeFight(int pokeAtk, int wildAtk) {
+//		for(Pokemon poke : team.getMembers()) {
+//			if(poke.isCurrentFighter() && !poke.isDead()) {
+//				poke.damage(wildAtk);
+//			}
+//		}
+//		if(!team.getCurrentPokemon().isDead()) {
+//			wildPokemon.damage(pokeAtk);
+//		}
+//	}
+
 	private void pokeFight(int pokeAtk, int wildAtk) {
-		for(Pokemon poke : team.getMembers()) {
+		for (Pokemon poke : team.getMembers()) {
 			if(poke.isCurrentFighter() && !poke.isDead()) {
+				wildAtk = wildPokemon.getPower();
 				poke.damage(wildAtk);
 			}
+			if (!team.getCurrentPokemon().isDead()) {
+				pokeAtk = poke.getPower();
+				this.wildPokemon.damage(pokeAtk);
+			}
 		}
-		if(!team.getCurrentPokemon().isDead()) {
-			wildPokemon.damage(pokeAtk);
-		}
+
 	}
 }

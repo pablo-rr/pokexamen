@@ -31,7 +31,7 @@
 			<form:input type="number" path="power" /><br />
 			<span> Health: </span>
 			<form:input type="number" path="health" /><br />
-			<form:input type="hidden" path="maxHealth" />
+			<form:input type="hidden" path="maxHealth" /><br />
 			<input name="capture" type="submit" value="Throw pokeball" />
 			<input name="fight" type="submit" value="Fight wild pokemon" />
 		</form:form><br />
