@@ -31,9 +31,9 @@
 			<form:input type="number" path="power" /><br />
 			<span> Health: </span>
 			<form:input type="number" path="health" /><br />
-			<form:input type="hidden" path="maxHealth" /><br />
-			<input name="capture" type="submit" value="Throw pokeball" />
-			<input name="fight" type="submit" value="Fight wild pokemon" />
+			<span> MaxHealth: </span>
+			<form:input type="number" path="maxHealth" /><br />
+			<input type="submit" value="Throw pokeball" />
 		</form:form><br />
 		
 		
@@ -90,7 +90,7 @@
 		<h1> Battle </h1><br />
 		
 		<form:form action="insertWildPokemon" method="get" modelAttribute="pokemon">
-			<input type="submit" value="Encontrar pokemon salvaje" />
+			<input type="submit" value="Find Wild Pokemon" />
 		</form:form><br /><br />
 		 
 		<c:out value="${team.getCurrentPokemon().getMessage()}"></c:out>
@@ -103,101 +103,9 @@
 		
 		<form:form action="battle${team.getCurrentPokemon().getPower()}-${wildPokemon.power}" method="post">
 			<input type="submit" value="Attack"></input>
+		</form:form>
+		<form:form action="catchWildPokemon" method="post" modelAttribute="pokemon">
+			<input type="submit" value="Throw a pokeball"></input>
 		</form:form><br />
-	
-	
-	<%-- 	<form:form action="insert" method="post" modelAttribute="person"> --%>
-	<!-- 		<span>nuevo item:</span> -->
-	<!-- 		<span>nombre:</span> -->
-	<%-- 		<form:input type="text" path="item.name" /> --%>
-	<!-- 		<span>peso:</span> -->
-	<%-- 		<form:input type="text" path="item.peso" /> --%>
-	<!-- 		<span>tipo:</span> -->
-	<%-- 		<form:input type="text" path="item.type" /> --%>
-	<!-- 		<input type="submit" value="guardar item" /> -->
-	<%-- 	</form:form> --%>
-	<!-- 	<table border="1"> -->
-	<!-- 		<thead> -->
-	<!-- 			<tr> -->
-	<!-- 				<td>Mochila</td> -->
-	<!-- 				<td>peso</td> -->
-	<!-- 				<td>tipo</td> -->
-	<!-- 			</tr> -->
-	<!-- 		</thead> -->
-	<!-- 		<tbody> -->
-	<%-- 			<c:forEach var="item" items="${person.bag.items}"> --%>
-	<!-- 				<tr> -->
-	<%-- 					<td><c:out value="${item.name}" /></td> --%>
-	<%-- 					<td><c:out value="${item.peso}" /></td> --%>
-	<%-- 					<td><c:out value="${item.type}" /></td> --%>
-	<!-- 				</tr> -->
-	<%-- 			</c:forEach> --%>
-	<!-- 		</tbody> -->
-	<!-- 	</table> -->
-	<!-- 	<br /> -->
-	<!-- 	<br /> -->
-	<!-- 	<table border="1"> -->
-	<!-- 		<thead> -->
-	<!-- 			<tr> -->
-	<!-- 				<td>armas disponibles</td> -->
-	<!-- 			</tr> -->
-	<!-- 		</thead> -->
-	<!-- 		<tbody> -->
-	<!-- 			<tr> -->
-	<!-- 				primaria -->
-	<%-- 				<td><c:out value="${person.primary.name}" /></td> --%>
-	<!-- 			</tr> -->
-	<!-- 			<tr> -->
-	<!-- 				secundaria -->
-	<%-- 				<td><c:out value="${person.secondary.name}" /></td> --%>
-	<!-- 			</tr> -->
-	<!-- 		</tbody> -->
-	<!-- 	</table> -->
-	<!-- 	<br /> -->
-	<!-- 	<br /> -->
-	<!-- 	<table border="1"> -->
-	<!-- 		<thead> -->
-	<!-- 			<tr> -->
-	<!-- 				<td>primary customization</td> -->
-	<!-- 			</tr> -->
-	<!-- 		</thead> -->
-	<!-- 		<tbody> -->
-	<%-- 			<c:forEach var="item" items="${person.primary.items}"> --%>
-	<!-- 				<tr> -->
-	<%-- 					<td><c:out value="${item.name}" /></td> --%>
-	<%-- 					<td><c:out value="${item.peso}" /></td> --%>
-	<%-- 					<td><c:out value="${item.type}" /></td> --%>
-	<!-- 				</tr> -->
-	<%-- 			</c:forEach> --%>
-	<!-- 		</tbody> -->
-	<!-- 	</table> -->
-	<!-- 	<br /> -->
-	
-	
-	<!-- 	<table border="1"> -->
-	<!-- 		<thead> -->
-	<!-- 			<tr> -->
-	<!-- 				<td>secundary customization</td> -->
-	<!-- 			</tr> -->
-	<!-- 		</thead> -->
-	<!-- 		<tbody> -->
-	<%-- 			<c:forEach var="item" items="${person.secondary.items}"> --%>
-	<!-- 				<tr> -->
-	<%--                     <td><c:out value="${item.name}" /></td> --%>
-	<%--                     <td><c:out value="${item.peso}" /></td> --%>
-	<%--                     <td><c:out value="${item.type}" /></td> --%>
-	<!-- 				</tr> -->
-	<%-- 			</c:forEach> --%>
-	<!-- 		</tbody> -->
-	<!-- 	</table> -->
-	
-	
-	<%-- 	<form:form action="switchWeapon" method="post"> --%>
-	<!-- 		<input type="submit" value="cambiar armas" /> -->
-	<%-- 	</form:form> --%>
-	
-	
-	
-	
 	</body>
 </html>
