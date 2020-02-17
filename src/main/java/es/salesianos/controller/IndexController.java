@@ -86,7 +86,7 @@ public class IndexController {
 		model.addAttribute("pokemonWildPower", wildPokemon.getPower());
 	}
 	
-	
+
 	@GetMapping("/")
 	public ModelAndView index(Model model) {
 		ModelAndView modelAndView = new ModelAndView("index");
