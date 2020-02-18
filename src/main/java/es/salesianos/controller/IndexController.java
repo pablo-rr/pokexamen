@@ -186,10 +186,10 @@ public class IndexController {
 		}
 	}
 	
-	@PostMapping("/wildCapture")
-	public ModelAndView wildCapture() {
+	@PostMapping("/wildCapture{wildName}-{wildPwr}-{wildHp}-{wildCapHp}")
+	public ModelAndView wildCapture(@PathVariable("wildName") String wildName, @PathVariable("wildPwr") int wildPwr, @PathVariable("wildHp") int wildHp, @PathVariable("wildCapHp") int wildCapHp) {
 		ModelAndView modelAndView = new ModelAndView("index");
-		
+		pokeball.catchPokemon(wildName, wildPwr, wildHp, wildCapHp, team);
 		addAllObjects(modelAndView);
 		return modelAndView;
 	}

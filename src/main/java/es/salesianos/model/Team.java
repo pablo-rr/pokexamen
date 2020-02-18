@@ -8,7 +8,9 @@ public interface Team {
 	public ArrayList<TeamPokemon> getMembers();
 	public int getMemberCount();
 	public void addMember(TeamPokemon member);
+	public void addMember(WildPokemon member);
 	public void removeMember(String memberName);
 	public void removeMember(int memberIndex);
 	public boolean isFull();
+	void addMember(String name, int power, int health);
 }

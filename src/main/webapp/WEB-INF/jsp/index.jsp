@@ -45,6 +45,7 @@
 		<br />
 		<input name="capture" type="submit" value="Throw pokeball" />
 	</form:form>
+	<c:out value="${pokeball.getMessage()}"></c:out>
 	
 	<br />
 	
@@ -105,12 +106,12 @@
 		<input type="submit" value="Attack"></input>
 	</form:form>
 	
-	<form:form action="wildCapture" method="post">
-		<input type="submit" value="Attack"></input>
+	<form:form action="wildCapture${wildPokemon.name}-${wildPokemon.power}-${wildPokemon.health}" method="post" modelAttribute="wildCapt">
+		<input type="submit" value="Capture"></input>
 	</form:form>
 	<br /> 
-	<c:out value="${team.getCurrentPokemon().getMessage()}"></c:out>
-	<c:out value="${wildPokemon.getMessage()}"></c:out>
+<%-- 	<c:out value="${team.getCurrentPokemon().getMessage()}"></c:out> --%>
+<%-- 	<c:out value="${wildPokemon.getMessage()}"></c:out> --%>
 	<br />
 	Pokemon: <span><c:out value="Wild ${wildPokemon.getName()}" /></span>
 	<br /> 
@@ -122,7 +123,7 @@
 	<br />
 	
 	<br />
-	<c:out value="${pokeball.getMessage()}"></c:out>
+	
 	<br /><br /><br />
 	<br />
 	<br /> 
