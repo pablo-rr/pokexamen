@@ -15,8 +15,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import es.salesianos.model.AbstractPokeball;
 import es.salesianos.model.AbstractTeam;
+import es.salesianos.model.EnemyTeam;
 import es.salesianos.model.Pokemon;
 import es.salesianos.model.PokemonTrainer;
+import es.salesianos.model.WildEnemy;
 
 @Controller
 public class IndexController {
@@ -26,9 +28,11 @@ public class IndexController {
 	@Autowired
 	private PokemonTrainer pokemonTrainer;
 	@Autowired
-	private PokemonTrainer wildEnemy;
+	private WildEnemy wildEnemy;
 	@Autowired
 	private AbstractTeam team;
+	@Autowired
+	private EnemyTeam enemyTeam;
 	@Autowired
 	private Pokemon pokemon;
 	@Autowired
@@ -42,6 +46,7 @@ public class IndexController {
 		modelAndView.addObject("pokemonTrainer", this.pokemonTrainer);
 		modelAndView.addObject("wildEnemy", this.wildEnemy);
 		modelAndView.addObject("team", this.team);
+		modelAndView.addObject("enemyTeam", this.enemyTeam);
 		modelAndView.addObject("pokemon", this.pokemon);
 		modelAndView.addObject("wildPokemon", this.wildPokemon);
 		modelAndView.addObject("currentWildPokemon", this.currentWildPokemon);
@@ -95,8 +100,9 @@ public class IndexController {
 		currentWildPokemon.setHealth(wildPokemon.getHealth());
 		currentWildPokemon.setMaxHealth(wildPokemon.getMaxHealth());
 		currentWildPokemon.setPower(wildPokemon.getPower());
+		currentWildPokemon.setCurrentFighter(true);
 
-		pokeball.catchPokemon(currentWildPokemon, wildEnemy.getTeam());
+		wildEnemy.getTeam().addMember(currentWildPokemon);
 	}
 	
 	private void addWildPokemon(Pokemon wildPokemon) {
@@ -105,6 +111,11 @@ public class IndexController {
 		wildPokemon.setMaxHealth(currentWildPokemon.getHealth());
 		wildPokemon.setHealth(currentWildPokemon.getMaxHealth());
 		wildPokemon.setPower(currentWildPokemon.getPower());
+	}
+
+	private void removeWildPokemon() {
+
+		wildEnemy.getTeam().removeMember(currentWildPokemon.getName());
 	}
 
 	@GetMapping("/")
@@ -190,9 +201,11 @@ public class IndexController {
 				poke.damage((int) (Math.random() * wildAtk));
 			}
 		}
-
-		if(!team.getCurrentPokemon().isDead()) {
-			currentWildPokemon.damage((int) (Math.random() * pokeAtk));
+		
+		for (Pokemon wildPoke : enemyTeam.getMembers()) {
+			if (!team.getCurrentPokemon().isDead() && !wildPoke.isDead()) {
+				wildEnemy.getTeam().getCurrentPokemon().damage((int) (Math.random() * pokeAtk));
+			}
 		}
 	}
 
@@ -201,6 +214,7 @@ public class IndexController {
 		ModelAndView modelAndView = new ModelAndView("index");
 		addWildPokemon(wildPokemon);
 		pokeball.catchPokemon(wildPokemon, pokemonTrainer.getTeam());
+		removeWildPokemon();
 		addAllObjects(modelAndView);
 		return modelAndView;
 	}

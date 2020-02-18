@@ -91,16 +91,46 @@
 		<c:out value="${team.getCurrentPokemon().getMessage()}"></c:out>
 		<c:out value="${pokemon.getMessage()}"></c:out><br />
 		
-		<span> Name: <c:out value="Wild ${pokemonWildName}" /></span><br />
+<!-- 		<span> Name: <c:out value="Wild ${pokemonWildName}" /></span><br />
 		<span> Health: <c:out value="${pokemonWildHealth}" /></span><br />
 		<span> Max Health: <c:out value="${pokemonWildMaxHealth}" /></span><br />
-		<span> Power: <c:out value="${pokemonWildPower}" /></span><br /><br />
+		<span> Power: <c:out value="${pokemonWildPower}" /></span><br /><br /> -->
+		
+		
+		
+		
+		<span> Wild Pokemon: </span>
+		
+		<table border="0">
+			<thead>
+				<tr>
+					<td colspan="6" align="center"> Team </td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><span> Name </span></td>
+					<td><span> Power </span></td>
+					<td><span> Health </span></td>
+					<td><span> MaxHealth </span></td>
+					<td></td>
+				</tr>
+				<c:forEach var="pokemon" items="${wildEnemy.getTeam().getMembers()}">
+					<tr>
+						<td><c:out value="${pokemon.name}"/></td>
+						<td><c:out value="${pokemon.power}"/></td>
+						<td><c:out value="${pokemon.health}"/></td>
+						<td><c:out value="${pokemon.maxHealth}"/></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table><br /><br /><br />
 		
 		<form:form action="battle${team.getCurrentPokemon().getPower()}-${enemyTeam.getCurrentPokemon().getPower()}" method="post">
 			<input type="submit" value="Attack"></input>
 		</form:form>
 		<form:form action="catchWildPokemon" method="post" modelAttribute="pokemon">
 			<input type="submit" value="Throw a pokeball"></input>
-		</form:form>
+		</form:form><br /><br /><br />
 	</body>
 </html>
