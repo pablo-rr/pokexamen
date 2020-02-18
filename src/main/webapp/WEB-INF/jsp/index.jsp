@@ -13,23 +13,25 @@
 </head>
 <body>
 
-	<form:form action="insertTrainer" method="post" modelAttribute="pokemonTrainer" >
-		<span>Poketrainer name:</span>
-		<form:input type="text" path="name" />
-		<br />
-		<span>Is gym owner?:</span>
-		<form:checkbox path="gymLeader" />
-		<br />
-		<input type="submit" value="Save trainer" />
-	</form:form>
-	<br />
-	<br /> 
-	Trainer: <span><c:out value="${pokemonTrainer.name}" /></span>
-	<br /> 
-	Gym owner: <span><c:out value="${pokemonTrainer.gymLeader}" /></span>
-	<br />
-	<br />
-	<br />
+<%-- 	<form:form action="insertTrainer" method="post" modelAttribute="pokemonTrainer" > --%>
+<!-- 		<span>Poketrainer name:</span> -->
+<%-- 		<form:input type="text" path="name" /> --%>
+<!-- 		<br /> -->
+<!-- 		<span>Is gym owner?:</span> -->
+<%-- 		<form:checkbox path="gymLeader" /> --%>
+<!-- 		<br /> -->
+<!-- 		<input type="submit" value="Save trainer" /> -->
+<%-- 	</form:form> --%>
+<!-- 	<br /> -->
+<!-- 	<br />  -->
+<%-- 	Trainer: <span><c:out value="${pokemonTrainer.name}" /></span> --%>
+<!-- 	<br />  -->
+<%-- 	Gym owner: <span><c:out value="${pokemonTrainer.gymLeader}" /></span> --%>
+<!-- 	<br /> -->
+<!-- 	<br /> -->
+<!-- 	<br /> -->
+
+	<h1> Capture form </h1>
 	<form:form action="pokemonEvent" method="post" modelAttribute="pokemon">
 		<span>Pokemon name:</span>
 		<form:input type="text" path="name" />
@@ -41,6 +43,19 @@
 		<form:input type="number" path="health" />
 		<br />
 		<input name="capture" type="submit" value="Throw pokeball" />
+	</form:form>
+	
+	<h1> Fight form </h1>
+	<form:form action="pokemonEvent" method="post" modelAttribute="pokemon">
+		<span>Pokemon name:</span>
+		<form:input type="text" path="name" />
+		<br />
+		<span>Power:</span>
+		<form:input type="number" path="power" />
+		<br />
+		<span>Health:</span>
+		<form:input type="number" path="health" />
+		<br />
 		<input name="fight" type="submit" value="Fight wild pokemon" />
 	</form:form>
 	
