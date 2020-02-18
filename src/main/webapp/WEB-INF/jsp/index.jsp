@@ -80,13 +80,8 @@
 				</c:forEach>
 			</tbody>
 		</table><br /><br /><br />
-		
-		
-	<%-- 	<form:form action="wildPokemon" method="post" modelAttribute="wildPokemon"> --%>
-	<!-- 		<input type="submit" value="Explore grass"></input> -->
-	<%-- 	</form:form> --%>
 	
-	
+		
 		<h1> Battle </h1><br />
 		
 		<form:form action="insertWildPokemon" method="get" modelAttribute="pokemon">
@@ -101,7 +96,7 @@
 		<span> Max Health: <c:out value="${pokemonWildMaxHealth}" /></span><br />
 		<span> Power: <c:out value="${pokemonWildPower}" /></span><br /><br />
 		
-		<form:form action="battle${team.getCurrentPokemon().getPower()}-${currentWildPokemon.power}" method="post">
+		<form:form action="battle${team.getCurrentPokemon().getPower()}-${enemyTeam.getCurrentPokemon().getPower()}" method="post">
 			<input type="submit" value="Attack"></input>
 		</form:form>
 		<form:form action="catchWildPokemon" method="post" modelAttribute="pokemon">

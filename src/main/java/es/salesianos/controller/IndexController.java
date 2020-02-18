@@ -26,23 +26,26 @@ public class IndexController {
 	@Autowired
 	private PokemonTrainer pokemonTrainer;
 	@Autowired
+	private PokemonTrainer wildEnemy;
+	@Autowired
+	private AbstractTeam team;
+	@Autowired
 	private Pokemon pokemon;
 	@Autowired
 	private Pokemon wildPokemon;
 	@Autowired
-	private AbstractTeam team;
+	private Pokemon currentWildPokemon;
 	@Autowired
 	private AbstractPokeball pokeball;
-	@Autowired
-	private Pokemon currentWildPokemon;
 
 	public void addAllObjects(ModelAndView modelAndView) {
 		modelAndView.addObject("pokemonTrainer", this.pokemonTrainer);
+		modelAndView.addObject("wildEnemy", this.wildEnemy);
+		modelAndView.addObject("team", this.team);
 		modelAndView.addObject("pokemon", this.pokemon);
 		modelAndView.addObject("wildPokemon", this.wildPokemon);
-		modelAndView.addObject("team", this.team);
-		modelAndView.addObject("pokeball", this.pokeball);
 		modelAndView.addObject("currentWildPokemon", this.currentWildPokemon);
+		modelAndView.addObject("pokeball", this.pokeball);
 	}
 	
 	private void addPageDataTrainer(PokemonTrainer pokemonTrainerForm) {
@@ -92,6 +95,8 @@ public class IndexController {
 		currentWildPokemon.setHealth(wildPokemon.getHealth());
 		currentWildPokemon.setMaxHealth(wildPokemon.getMaxHealth());
 		currentWildPokemon.setPower(wildPokemon.getPower());
+
+		pokeball.catchPokemon(currentWildPokemon, wildEnemy.getTeam());
 	}
 	
 	private void addWildPokemon(Pokemon wildPokemon) {
@@ -182,12 +187,12 @@ public class IndexController {
 	private void pokeFight(int pokeAtk, int wildAtk) {
 		for(Pokemon poke : team.getMembers()) {
 			if(poke.isCurrentFighter() && !poke.isDead()) {
-				poke.damage(wildAtk);
+				poke.damage((int) (Math.random() * wildAtk));
 			}
 		}
 
 		if(!team.getCurrentPokemon().isDead()) {
-			currentWildPokemon.damage(pokeAtk);
+			currentWildPokemon.damage((int) (Math.random() * pokeAtk));
 		}
 	}
 
