@@ -6,6 +6,7 @@ public class AbstractPokeball implements Pokeball {
 
 	private int catchChancePercentage;
 	private String message;
+	private boolean theChosenOne;
 	
 	@Override
 	public void catchPokemon(Pokemon pokemon, AbstractTeam team) {
@@ -25,7 +26,14 @@ public class AbstractPokeball implements Pokeball {
 		} else {
 			setMessage("The wild pokemon is dead, you can't catch it!");
 		}
+	}
 
+	public boolean isTheChosenOne() {
+		return theChosenOne;
+	}
+
+	public void setTheChosenOne(boolean theChosenOne) {
+		this.theChosenOne = theChosenOne;
 	}
 
 	public int getCatchChancePercentage() {
@@ -43,6 +51,4 @@ public class AbstractPokeball implements Pokeball {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
-
 }

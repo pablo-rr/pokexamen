@@ -53,16 +53,6 @@ public class IndexController {
 		modelAndView.addObject("pokeball", this.pokeball);
 	}
 	
-	private void addPageDataTrainer(PokemonTrainer pokemonTrainerForm) {
-		if (!StringUtils.isEmpty(pokemonTrainerForm.getName())) {
-			pokemonTrainer.setName(pokemonTrainerForm.getName());
-		}
-		
-		if (!StringUtils.isEmpty(pokemonTrainerForm.isGymLeader())) {
-			pokemonTrainer.setGymLeader(pokemonTrainerForm.isGymLeader());
-		}
-	}
-	
 	private void addPageDataPokemon(Pokemon pokemonForm) {
 		if (!StringUtils.isEmpty(pokemonForm.getName())) {
 			pokemon.setName(pokemonForm.getName());
@@ -101,6 +91,7 @@ public class IndexController {
 		currentWildPokemon.setMaxHealth(wildPokemon.getMaxHealth());
 		currentWildPokemon.setPower(wildPokemon.getPower());
 		currentWildPokemon.setCurrentFighter(true);
+		currentWildPokemon.setWild(true);
 
 		wildEnemy.getTeam().addMember(currentWildPokemon);
 	}
@@ -123,15 +114,6 @@ public class IndexController {
 		ModelAndView modelAndView = new ModelAndView("index");
 		addAllObjects(modelAndView);
 		log.debug(modelAndView);
-		return modelAndView;
-	}
-	
-	@PostMapping("/insertTrainer")
-	public ModelAndView pokemonTrainerInsert(@ModelAttribute("pokemonTrainer") PokemonTrainer pokeTrainer) {
-		log.debug("pokemonTrainerInsert:" + this.pokemonTrainer.toString());		
-		ModelAndView modelAndView = new ModelAndView("index");	
-		addPageDataTrainer(pokeTrainer);
-		addAllObjects(modelAndView);
 		return modelAndView;
 	}
 

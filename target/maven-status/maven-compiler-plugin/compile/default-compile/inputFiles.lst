@@ -7,6 +7,7 @@
 /home/valero/GIT/spring/pokexamen/src/main/java/es/salesianos/controller/IndexController.java
 /home/valero/GIT/spring/pokexamen/src/main/java/SpringBootWebApplication.java
 /home/valero/GIT/spring/pokexamen/src/main/java/es/salesianos/model/Team.java
+/home/valero/GIT/spring/pokexamen/src/main/java/es/salesianos/model/PC.java
 /home/valero/GIT/spring/pokexamen/src/main/java/es/salesianos/model/AbstractTeam.java
 /home/valero/GIT/spring/pokexamen/src/main/java/es/salesianos/model/PokeballBasic.java
 /home/valero/GIT/spring/pokexamen/src/main/java/es/salesianos/model/EnemyTeam.java

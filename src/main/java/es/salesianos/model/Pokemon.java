@@ -41,7 +41,7 @@ public class Pokemon {
 			setHealth(0);
 			setCurrentFighter(false);
 			if(!isWild()) {
-				setMessage(getName() + " fainted! Select a new Pokemon to fight!");
+				setMessage(" " + getName() + " fainted! Select a new Pokemon to fight!");
 			} else {
 				setMessage("The wild " + getName() + " fainted, you win!");
 			}

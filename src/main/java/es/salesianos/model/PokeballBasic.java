@@ -8,5 +8,6 @@ import org.springframework.stereotype.Component;
 public class PokeballBasic extends AbstractPokeball{
 	public PokeballBasic() {
 		setCatchChancePercentage(10);
+		setTheChosenOne(false);
 	}
 }
