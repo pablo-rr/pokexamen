@@ -3,16 +3,13 @@ package es.salesianos.model;
 import org.springframework.stereotype.Component;
 
 @Component("pokemon")
-//public class Pokemon extends AbstractPokeball{
 public class Pokemon{
 	private String ID;
-	private String name;
-	private int health;
-	private int power;
 	private boolean dead;
-	private boolean wild;
-	private boolean currentFighter;
 	private String message;
+	private String name;
+	private int power;
+	protected int health;
 	
 	public String getID() {
 		return ID;
@@ -29,20 +26,6 @@ public class Pokemon{
 		}
 	}
 	
-	public void damage(int ammount) {
-		health -= ammount;
-		if(health <= 0) {
-			setDead(true);
-			setHealth(0);
-			setCurrentFighter(false);
-			if(!isWild()) {
-				setMessage(getName() + " fainted! Select a new Pokemon to fight!");
-			}else {
-				setMessage("The wild " + getName() + " fainted, you win!");
-			}
-		}
-	}
-	
 	public void revive() {
 		if(isDead()) {
 			health = 1;
@@ -50,7 +33,13 @@ public class Pokemon{
 		}
 	}
 	
-	public void attack(Pokemon target) {
+	public void attack(TeamPokemon target) {
+		if(!isDead()) {			
+			target.damage(power);
+		}
+	}
+	
+	public void attack(WildPokemon target) {
 		if(!isDead()) {			
 			target.damage(power);
 		}
@@ -86,24 +75,6 @@ public class Pokemon{
 
 	public void setDead(boolean dead) {
 		this.dead = dead;
-	}
-
-	public boolean isWild() {
-		return wild;
-	}
-
-	public void setWild(boolean status) {
-		this.wild = status;
-	}
-
-	public boolean isCurrentFighter() {
-		return currentFighter;
-	}
-
-	public void setCurrentFighter(boolean currentFighter) {
-		if(!isDead()) {
-			this.currentFighter = currentFighter;
-		}
 	}
 
 	public String getMessage() {

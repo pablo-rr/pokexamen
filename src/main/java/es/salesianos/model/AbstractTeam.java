@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 @Component("team")
 public class AbstractTeam implements Team{
 	private int maxMembers = 6;
-	private ArrayList<Pokemon> members = new ArrayList<Pokemon>();
+	private ArrayList<TeamPokemon> members = new ArrayList<TeamPokemon>();
 	
-	public Pokemon getCurrentPokemon() {
-		for(Pokemon poke : members) {
+	public TeamPokemon getCurrentPokemon() {
+		for(TeamPokemon poke : members) {
 			if(poke.isCurrentFighter()) {
 				return poke;
 			}
@@ -28,10 +28,9 @@ public class AbstractTeam implements Team{
 	}
 
 	@Override
-	public void addMember(Pokemon newMember) {
+	public void addMember(TeamPokemon newMember) {
 		if(members.size() < maxMembers) {
 			members.add(newMember);
-			newMember.setWild(false);
 			newMember.setID(Integer.toString(members.size()));
 		}
 	}
@@ -66,7 +65,7 @@ public class AbstractTeam implements Team{
 	}
 
 	@Override
-	public ArrayList<Pokemon> getMembers() {
+	public ArrayList<TeamPokemon> getMembers() {
 		return members;
 	}
 }

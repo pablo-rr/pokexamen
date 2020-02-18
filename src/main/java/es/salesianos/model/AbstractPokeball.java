@@ -7,7 +7,7 @@ public class AbstractPokeball implements Pokeball{
 	private String message;
 	
 	@Override
-	public void catchPokemon(Pokemon pokemon, AbstractTeam team) {
+	public void catchPokemon(TeamPokemon pokemon, AbstractTeam team) {
 		Random random = new Random();
 		int chance = random.nextInt(99)+1;
 		if(chance <= catchChancePercentage) {	
