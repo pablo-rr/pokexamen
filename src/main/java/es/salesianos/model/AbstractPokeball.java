@@ -13,15 +13,19 @@ public class AbstractPokeball implements Pokeball {
 		Random random = new Random();
 		int chance = random.nextInt(99) + 1;
 		if (pokemon.getHealth() != 0) {
-			if (chance <= catchChancePercentage) {
-				team.addMember(pokemon);
-				if (team.getMemberCount() < 6) {
-					setMessage("You catched " + pokemon.getName() + "!");
+			if (pokemon.isLessThan25Percent() || isTheChosenOne()) {
+				if (chance <= catchChancePercentage) {
+					team.addMember(pokemon);
+					if (team.getMemberCount() < 6) {
+						setMessage("You catched " + pokemon.getName() + "!");
+					} else {
+						setMessage("Your team is full!");
+					}
 				} else {
-					setMessage("Your team is full!");
+					setMessage("The wild pokemon escaped!");
 				}
 			} else {
-				setMessage("The wild pokemon escaped!");
+				setMessage("You need to lower its life to have a chance");
 			}
 		} else {
 			setMessage("The wild pokemon is dead, you can't catch it!");

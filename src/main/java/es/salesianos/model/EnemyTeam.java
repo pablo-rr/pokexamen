@@ -14,7 +14,7 @@ public class EnemyTeam implements Team {
 	public void addMember(Pokemon newMember) {
 		if (!isFull()) {
 			members.add(newMember);
-			newMember.setWild(false);
+			newMember.setWild(true);
 			newMember.setID(Integer.toString(members.size()));
 		}
 	}

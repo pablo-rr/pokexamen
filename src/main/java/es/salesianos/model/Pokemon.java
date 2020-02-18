@@ -97,6 +97,14 @@ public class Pokemon {
 		return nameList;
 	}
 
+	public boolean isLessThan25Percent() {
+		if ((health / maxHealth) * 100 <= 25) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public String getID() {
 		return ID;
 	}
