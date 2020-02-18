@@ -71,9 +71,10 @@ public class Pokemon {
 
 	public String getRandomName() {
 		List<String> pokemonList = pokemonList();
-		int chance = (int) Math.floor(Math.random() * pokemonList.size() + 1);
+		int chance = (int) Math.floor(Math.random() * pokemonList.size());
 		if (!pokemonList.isEmpty()) {
-			return pokemonList.get(chance);
+			name = pokemonList.get(chance);
+			return name;
 		} else {
 			return "This pokemon will be implemented in the next update!";
 		}

@@ -33,13 +33,16 @@ public class IndexController {
 	private AbstractTeam team;
 	@Autowired
 	private AbstractPokeball pokeball;
-	
+	@Autowired
+	private Pokemon currentWildPokemon;
+
 	public void addAllObjects(ModelAndView modelAndView) {
 		modelAndView.addObject("pokemonTrainer", this.pokemonTrainer);
 		modelAndView.addObject("pokemon", this.pokemon);
 		modelAndView.addObject("wildPokemon", this.wildPokemon);
 		modelAndView.addObject("team", this.team);
 		modelAndView.addObject("pokeball", this.pokeball);
+		modelAndView.addObject("currentWildPokemon", this.currentWildPokemon);
 	}
 	
 	private void addPageDataTrainer(PokemonTrainer pokemonTrainerForm) {
@@ -84,8 +87,20 @@ public class IndexController {
 		model.addAttribute("pokemonWildHealth", wildPokemon.getHealth());
 		model.addAttribute("pokemonWildMaxHealth", wildPokemon.getMaxHealth());
 		model.addAttribute("pokemonWildPower", wildPokemon.getPower());
+
+		currentWildPokemon.setName(wildPokemon.getName());
+		currentWildPokemon.setHealth(wildPokemon.getHealth());
+		currentWildPokemon.setMaxHealth(wildPokemon.getMaxHealth());
+		currentWildPokemon.setPower(wildPokemon.getPower());
 	}
 	
+	private void addWildPokemon(Pokemon wildPokemon) {
+
+		wildPokemon.setName(currentWildPokemon.getName());
+		wildPokemon.setMaxHealth(currentWildPokemon.getHealth());
+		wildPokemon.setHealth(currentWildPokemon.getMaxHealth());
+		wildPokemon.setPower(currentWildPokemon.getPower());
+	}
 
 	@GetMapping("/")
 	public ModelAndView index(Model model) {
@@ -149,7 +164,7 @@ public class IndexController {
 	}
 	
 	@GetMapping("insertWildPokemon")
-	public ModelAndView wildPokemonInsert(ModelMap model, @ModelAttribute("pokemon") Pokemon poke) {
+	public ModelAndView wildPokemonInsert(ModelMap model, @ModelAttribute("wildPokemon") Pokemon poke) {
 		ModelAndView modelAndView = new ModelAndView("index");
 		addPageDataWildPokemon(model, poke);
 		addAllObjects(modelAndView);
@@ -168,19 +183,19 @@ public class IndexController {
 		for(Pokemon poke : team.getMembers()) {
 			if(poke.isCurrentFighter() && !poke.isDead()) {
 				poke.damage(wildAtk);
-				pokemon.setMessage("The wild " + wildPokemon.getName() + " attacked!");
 			}
 		}
+
 		if(!team.getCurrentPokemon().isDead()) {
-			wildPokemon.damage(pokeAtk);
-			pokemon.setMessage(pokemon.getName() + " attacked!");
+			currentWildPokemon.damage(pokeAtk);
 		}
 	}
 
 	@PostMapping("/catchWildPokemon")
-	public ModelAndView catchWildPokemon(@ModelAttribute("pokemon") Pokemon wildPokemon) {
+	public ModelAndView catchWildPokemon(@ModelAttribute("wildPokemon") Pokemon wildPokemon) {
 		ModelAndView modelAndView = new ModelAndView("index");
-		pokeball.catchPokemon(this.wildPokemon, pokemonTrainer.getTeam());
+		addWildPokemon(wildPokemon);
+		pokeball.catchPokemon(wildPokemon, pokemonTrainer.getTeam());
 		addAllObjects(modelAndView);
 		return modelAndView;
 	}

@@ -101,11 +101,11 @@
 		<span> Max Health: <c:out value="${pokemonWildMaxHealth}" /></span><br />
 		<span> Power: <c:out value="${pokemonWildPower}" /></span><br /><br />
 		
-		<form:form action="battle${team.getCurrentPokemon().getPower()}-${wildPokemon.power}" method="post">
+		<form:form action="battle${team.getCurrentPokemon().getPower()}-${currentWildPokemon.power}" method="post">
 			<input type="submit" value="Attack"></input>
 		</form:form>
 		<form:form action="catchWildPokemon" method="post" modelAttribute="pokemon">
 			<input type="submit" value="Throw a pokeball"></input>
-		</form:form><br />
+		</form:form>
 	</body>
 </html>
