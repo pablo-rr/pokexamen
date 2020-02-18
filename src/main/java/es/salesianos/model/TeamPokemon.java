@@ -6,8 +6,10 @@ import org.springframework.stereotype.Component;
 public class TeamPokemon extends Pokemon{
 	private boolean currentFighter;
 	
-	public void damage(int ammount) {
-		health -= ammount;
+	public void damage(double d) {
+		if(!isDead()) {			
+			health -= d;
+		}
 		if(health <= 0) {
 			setDead(true);
 			setHealth(0);

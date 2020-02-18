@@ -1,11 +1,17 @@
 package es.salesianos.model;
 
+import java.util.Arrays;
 import java.util.Random;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 
 public class AbstractPokeball implements Pokeball{
 	private int catchChancePercentage;
 	private String message;
 	private int chance;
+	@Autowired
+	Environment environment;
 	
 	public void chances() {
 		
@@ -30,7 +36,7 @@ public class AbstractPokeball implements Pokeball{
 	public void catchPokemon(String name, int power, int health, int captureHealth, AbstractTeam team) {
 		Random random = new Random();
 		chance = random.nextInt(99)+1;
-		if(chance <= catchChancePercentage && health <= captureHealth) {	
+		if((chance <= catchChancePercentage && health <= captureHealth) || Arrays.stream(environment.getActiveProfiles()).anyMatch(env -> (env.equalsIgnoreCase("pokeballMasterball")))) {	
 			team.addMember(name, power, health);
 			if(team.getMemberCount() < 6) {
 				setMessage("You catched " + name + "!");

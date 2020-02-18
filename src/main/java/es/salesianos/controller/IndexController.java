@@ -91,6 +91,8 @@ public class IndexController {
 			wildPokemon.setHealth(pokemonForm.getHealth());
 		}
 		
+		wildPokemon.setDead(false);
+		
 		wildPokemon.setCaptureHealth();
 	}
 	
@@ -167,10 +169,12 @@ public class IndexController {
 		}
 	}
 	
-	@PostMapping("/battle{pokeAtk}-{wildAtk}")
-	public ModelAndView battle(@PathVariable("pokeAtk") int pokeAtk, @PathVariable("wildAtk") int wildAtk) {
+	@PostMapping("/battle{pokeAtk}-{wildAtk}-{pokeDead}-{wildDead}")
+	public ModelAndView battle(@PathVariable("pokeAtk") int pokeAtk, @PathVariable("wildAtk") int wildAtk, @PathVariable("pokeDead") Boolean pokeDead, @PathVariable("wildDead") Boolean wildDead) {
 		ModelAndView modelAndView = new ModelAndView("index");
-		pokeFight(pokeAtk, wildAtk);
+		if(!pokeDead && !wildDead) {
+			pokeFight(pokeAtk, wildAtk);
+		}
 		addAllObjects(modelAndView);
 		return modelAndView;
 	}

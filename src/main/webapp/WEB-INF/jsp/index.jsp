@@ -12,25 +12,6 @@
 	rel="stylesheet">
 </head>
 <body>
-
-<%-- 	<form:form action="insertTrainer" method="post" modelAttribute="pokemonTrainer" > --%>
-<!-- 		<span>Poketrainer name:</span> -->
-<%-- 		<form:input type="text" path="name" /> --%>
-<!-- 		<br /> -->
-<!-- 		<span>Is gym owner?:</span> -->
-<%-- 		<form:checkbox path="gymLeader" /> --%>
-<!-- 		<br /> -->
-<!-- 		<input type="submit" value="Save trainer" /> -->
-<%-- 	</form:form> --%>
-<!-- 	<br /> -->
-<!-- 	<br />  -->
-<%-- 	Trainer: <span><c:out value="${pokemonTrainer.name}" /></span> --%>
-<!-- 	<br />  -->
-<%-- 	Gym owner: <span><c:out value="${pokemonTrainer.gymLeader}" /></span> --%>
-<!-- 	<br /> -->
-<!-- 	<br /> -->
-<!-- 	<br /> -->
-
 	<h1> Team </h1>
 	<h3> Adopt a pokemon! </h3>
 	<form:form action="pokemonInsert" method="post" modelAttribute="pokemon">
@@ -49,6 +30,8 @@
 	
 	<br />
 	
+	<h1>_____________________________________________________________________</h1>
+	<br />
 	<h1> Tall grass </h1>
 	<h3> Fight a wild pokemon! </h3>
 	<form:form action="wildPokemon" method="post" modelAttribute="wildPokemon">
@@ -65,6 +48,8 @@
 <!-- 		<input /> -->
 	</form:form>
 	
+	<h1>_____________________________________________________________________</h1>
+	<br />
 	<h1>Battle</h1>
 	<h3>Fight against a wild pokemon!</h3>
 	
@@ -100,18 +85,16 @@
 				</c:forEach>
 			</tbody>
 	</table>
-	
 	<br />
-	<form:form action="battle${team.getCurrentPokemon().getPower()}-${wildPokemon.power}" method="post">
+	<br /> 
+	<br />
+	<form:form action="battle${team.getCurrentPokemon().getPower()}-${wildPokemon.power}-${team.getCurrentPokemon().isDead()}-${wildPokemon.dead}" method="post">
 		<input type="submit" value="Attack"></input>
 	</form:form>
 	
-	<form:form action="wildCapture${wildPokemon.name}-${wildPokemon.power}-${wildPokemon.health}" method="post" modelAttribute="wildCapt">
-		<input type="submit" value="Capture"></input>
+	<form:form action="wildCapture${wildPokemon.name}-${wildPokemon.power}-${wildPokemon.health}-${wildPokemon.captureHealth}" method="post" modelAttribute="wildCapt">
+		<input type="submit" value="Capture"/></input>
 	</form:form>
-	<br /> 
-<%-- 	<c:out value="${team.getCurrentPokemon().getMessage()}"></c:out> --%>
-<%-- 	<c:out value="${wildPokemon.getMessage()}"></c:out> --%>
 	<br />
 	Pokemon: <span><c:out value="Wild ${wildPokemon.getName()}" /></span>
 	<br /> 
@@ -121,18 +104,5 @@
 	<br />
 	Capture health: <span><c:out value="${wildPokemon.captureHealth}" /></span>
 	<br />
-	
-	<br />
-	
-	<br /><br /><br />
-	<br />
-	<br /> 
-	<br /> 
-	<br />
-<%-- 	<form:form action="wildPokemon" method="post" modelAttribute="wildPokemon"> --%>
-<!-- 		<input type="submit" value="Explore grass"></input> -->
-<%-- 	</form:form> --%>
-
-
 </body>
 </html>

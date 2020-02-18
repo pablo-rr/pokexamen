@@ -1,5 +1,7 @@
 package es.salesianos.model;
 
+import java.util.Random;
+
 import org.springframework.stereotype.Component;
 
 @Component("pokemon")
@@ -34,14 +36,18 @@ public class Pokemon{
 	}
 	
 	public void attack(TeamPokemon target) {
-		if(!isDead()) {			
-			target.damage(power);
+		if(!isDead()) {		
+			Random random = new Random();
+			Double modifier = random.nextDouble();
+			target.damage(power*modifier);
 		}
 	}
 	
 	public void attack(WildPokemon target) {
-		if(!isDead()) {			
-			target.damage(power);
+		if(!isDead()) {		
+			Random random = new Random();
+			Double modifier = random.nextDouble();
+			target.damage(power*modifier);
 		}
 	}
 	
