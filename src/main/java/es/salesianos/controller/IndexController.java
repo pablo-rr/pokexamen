@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import es.salesianos.model.PokemonTrainer;
 import es.salesianos.model.Pokemon;
 import es.salesianos.model.Team;
+import es.salesianos.model.WildPokemon;
 import es.salesianos.model.AbstractPokeball;
 import es.salesianos.model.AbstractTeam;
 import es.salesianos.model.PokemonTrainer;
@@ -34,7 +35,7 @@ public class IndexController {
 	@Autowired
 	private Pokemon pokemon;
 	@Autowired
-	private Pokemon wildPokemon;
+	private WildPokemon wildPokemon;
 	@Autowired
 	private AbstractTeam team;
 	@Autowired
@@ -76,21 +77,21 @@ public class IndexController {
 		}
 	}
 	
-	private void addPageDataWildPokemon(Pokemon pokemonForm) {
-		if (!StringUtils.isEmpty(pokemonForm.getName())) {
-			wildPokemon.setName(pokemonForm.getName());
+	private void addPageDataWildPokemon(WildPokemon pokemonForm) {
+		if (!StringUtils.isEmpty(pokemonForm.getWildName())) {
+			wildPokemon.setWildName(pokemonForm.getWildName());
 		}
 		
 		if (!StringUtils.isEmpty(pokemonForm.isWild())) {
 			wildPokemon.setWild(true);
 		}
 		
-		if (!StringUtils.isEmpty(pokemonForm.getPower())) {
-			wildPokemon.setPower(pokemonForm.getPower());
+		if (!StringUtils.isEmpty(pokemonForm.getWildPower())) {
+			wildPokemon.setWildPower(pokemonForm.getWildPower());
 		}
 		
-		if (!StringUtils.isEmpty(pokemonForm.getHealth())) {
-			wildPokemon.setHealth(pokemonForm.getHealth());
+		if (!StringUtils.isEmpty(pokemonForm.getWildHealth())) {
+			wildPokemon.setWildHealth(pokemonForm.getWildHealth());
 		}
 	}
 	
@@ -112,7 +113,8 @@ public class IndexController {
 		return modelAndView;
 	}
 	
-	@PostMapping(path = "/pokemonEvent", params = {"fight"})
+//	@PostMapping(path = "/pokemonEvent", params = {"fight"})
+	@PostMapping("/wildPokemon")
 	public ModelAndView wildPokemon(@ModelAttribute("pokemon") Pokemon poke) {	
 		ModelAndView modelAndView = new ModelAndView("index");
 		addPageDataWildPokemon(poke);
@@ -121,7 +123,8 @@ public class IndexController {
 	}
 
 
-	@PostMapping(path = "/pokemonEvent", params = {"capture"})
+//	@PostMapping(path = "/pokemonEvent", params = {"capture"})
+	@PostMapping("/pokemonInsert")
 	public ModelAndView pokemonInsert(@ModelAttribute("pokemon") Pokemon poke) {	
 		ModelAndView modelAndView = new ModelAndView("index");
 		addPageDataPokemon(poke);

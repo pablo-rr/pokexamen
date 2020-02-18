@@ -31,8 +31,9 @@
 <!-- 	<br /> -->
 <!-- 	<br /> -->
 
-	<h1> Capture form </h1>
-	<form:form action="pokemonEvent" method="post" modelAttribute="pokemon">
+	<h1> Team </h1>
+	<h3> Adopt a pokemon! </h3>
+	<form:form action="pokemonInsert" method="post" modelAttribute="pokemon">
 		<span>Pokemon name:</span>
 		<form:input type="text" path="name" />
 		<br />
@@ -45,18 +46,26 @@
 		<input name="capture" type="submit" value="Throw pokeball" />
 	</form:form>
 	
-	<h1> Fight form </h1>
-	<form:form action="pokemonEvent" method="post" modelAttribute="pokemon">
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	
+	<h1> Tall grass </h1>
+	<h3> Fight a wild pokemon! </h3>
+	<form:form action="wildPokemon" method="post" modelAttribute="wildPokemon">
 		<span>Pokemon name:</span>
-		<form:input type="text" path="name" />
+		<form:input type="text" path="wildName" />
 		<br />
 		<span>Power:</span>
-		<form:input type="number" path="power" />
+		<form:input type="number" path="wildPower" />
 		<br />
 		<span>Health:</span>
-		<form:input type="number" path="health" />
+		<form:input type="number" path="wildHealth" />
 		<br />
 		<input name="fight" type="submit" value="Fight wild pokemon" />
+<!-- 		<input /> -->
 	</form:form>
 	
 	<br />
