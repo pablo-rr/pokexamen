@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
-Implementation-Title: Pubg bag
+Build-Jdk-Spec: 11
+Implementation-Title: Pokemon Game
 Implementation-Version: 1.0.0-SNAPSHOT
-Build-Jdk-Spec: 1.8
 Created-By: Maven Integration for Eclipse
 

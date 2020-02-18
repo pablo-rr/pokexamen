@@ -5,16 +5,21 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component("pokemonTrainer")
-public class PokemonTrainer{
+public class PokemonTrainer {
+
 	private String name;
+	private boolean gymLeader;
+
 	@Autowired
 	private AbstractTeam team;
+
 	@Autowired
 	@Qualifier("pokeball")
 	private AbstractPokeball pokeball;
-	private boolean gymLeader;
+
 	private Pokemon currentPokemonOut;
 	
+
 	public String getName() {
 		return name;
 	}

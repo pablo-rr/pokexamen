@@ -4,21 +4,18 @@ import java.util.ArrayList;
 
 import org.springframework.stereotype.Component;
 
-@Component("team")
-public class AbstractTeam implements Team {
+@Component("enemyTeam")
+public class EnemyTeam implements Team {
 
-	private int maxMembers = 6;
+	private int maxMembers = 1;
 	private ArrayList<Pokemon> members = new ArrayList<Pokemon>();
-	private PC pc = new PC();
 	
 	@Override
 	public void addMember(Pokemon newMember) {
 		if (!isFull()) {
 			members.add(newMember);
-			newMember.setWild(false);
+			newMember.setWild(true);
 			newMember.setID(Integer.toString(members.size()));
-		} else {
-			pc.addMember(newMember);
 		}
 	}
 
@@ -73,13 +70,4 @@ public class AbstractTeam implements Team {
 	public ArrayList<Pokemon> getMembers() {
 		return members;
 	}
-
-	public PC getPC() {
-		return pc;
-	}
-
-	public void setPC(PC pc) {
-		this.pc = pc;
-	}
-
 }
