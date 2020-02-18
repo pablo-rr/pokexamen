@@ -2,6 +2,7 @@
 /home/prr/Desktop/pokexamen/src/main/java/SpringBootWebApplication.java
 /home/prr/Desktop/pokexamen/src/main/java/es/salesianos/model/PokeballSuperball.java
 /home/prr/Desktop/pokexamen/src/main/java/es/salesianos/model/Pokeball.java
+/home/prr/Desktop/pokexamen/src/main/java/es/salesianos/model/TeamPokemon.java
 /home/prr/Desktop/pokexamen/src/main/java/es/salesianos/model/PokeballMasterball.java
 /home/prr/Desktop/pokexamen/src/main/java/es/salesianos/model/PokeballBasic.java
 /home/prr/Desktop/pokexamen/src/main/java/es/salesianos/model/AbstractPokeball.java
