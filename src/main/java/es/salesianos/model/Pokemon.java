@@ -34,8 +34,8 @@ public class Pokemon {
 		}
 	}
 	
-	public void damage(int amount) {
-		health -= amount;
+	public void damage() {
+		health -= Math.random() * power;
 		if(health <= 0) {
 			setDead(true);
 			setHealth(0);
