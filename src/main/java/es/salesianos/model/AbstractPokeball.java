@@ -28,7 +28,7 @@ public class AbstractPokeball implements Pokeball {
 				setMessage("You need to lower its life to have a chance");
 			}
 		} else {
-			setMessage("The wild pokemon is dead, you can't catch it!");
+			setMessage("This pokemon is dead, you can't catch it!");
 		}
 	}
 

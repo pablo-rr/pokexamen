@@ -70,17 +70,17 @@
 					</tr>
 				</c:forEach>
 			</tbody>
-		</table><br /><br />
+		</table><br />
 	
 		
 		<h2> Insert Wild Pokemon AUTOMATICALLY WOWOWOWOWOW (Necesito puntos Gorka) </h2><br />
 		
 		<form:form action="insertWildPokemon" method="get" modelAttribute="pokemon">
 			<input type="submit" value="Find Wild Pokemon" />
-		</form:form><br /><br />
+		</form:form><br />
 		 
-		<c:out value="${team.getCurrentPokemon().getMessage()}"></c:out>
-		<c:out value="${pokemon.getMessage()}"></c:out><br />
+		<c:out value="${team.getCurrentPokemon().getMessage()}"></c:out><br />
+		<c:out value="${pokemon.getMessage()}"></c:out><br /><br />
 
 		
 		<span> Wild Pokemon: </span><br /><br />
@@ -138,6 +138,6 @@
 					</tr>
 				</c:forEach>
 			</tbody>
-		</table><br /><br /><br />
+		</table><br /><br />
 	</body>
 </html>
