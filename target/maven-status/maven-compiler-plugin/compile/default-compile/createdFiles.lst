@@ -1,0 +1,15 @@
+es/salesianos/model/TeamVanilla.class
+SpringBootWebApplication.class
+es/salesianos/model/Pokeball.class
+es/salesianos/controller/IndexController.class
+es/salesianos/model/PokeballSuperball.class
+es/salesianos/model/PokeballMasterball.class
+es/salesianos/model/PokeballUltraball.class
+es/salesianos/model/Pokemon.class
+es/salesianos/model/AbstractPokeball.class
+es/salesianos/model/PokeballBasic.class
+es/salesianos/model/TeamPokemon.class
+es/salesianos/model/Team.class
+es/salesianos/model/PokemonTrainer.class
+es/salesianos/model/AbstractTeam.class
+es/salesianos/model/WildPokemon.class
